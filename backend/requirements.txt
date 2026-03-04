@@ -1,0 +1,9 @@
+fastapi
+uvicorn 
+gitpython
+
+
+openai
+faiss-cpu
+tiktoken
+dotenv
