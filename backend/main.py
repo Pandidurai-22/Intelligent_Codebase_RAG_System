@@ -47,7 +47,6 @@ def root():
 @app.post("/index-repo")
 def index_repo(request: RepoRequest):
     repo_path = clone_repo(request.repo_url)
-    index_repository(repo_path)
     return{"message": "repo Cloned and indexed", "path": repo_path}
 
 @app.get("/repo-structure")
