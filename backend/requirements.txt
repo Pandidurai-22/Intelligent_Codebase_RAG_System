@@ -7,3 +7,4 @@ openai
 faiss-cpu
 tiktoken
 dotenv
+sentence_transformers

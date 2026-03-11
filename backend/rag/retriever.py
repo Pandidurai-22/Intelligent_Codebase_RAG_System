@@ -17,4 +17,6 @@ def retrieve_chunks(question, top_k=5):
     distances, indices = index.search(question_embedding, top_k)
 
     results = [chunks[i] for i in indices[0]]
+    print("Retrieved chunks:", len(results))
+    
     return results

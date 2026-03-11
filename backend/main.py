@@ -11,6 +11,7 @@ load_dotenv()
 
 from rag.retriever import retrieve_chunks
 from rag.generator import generate_answer
+from rag.indexer import index_repository
 from pydantic import BaseModel
 
 
@@ -47,6 +48,7 @@ def root():
 @app.post("/index-repo")
 def index_repo(request: RepoRequest):
     repo_path = clone_repo(request.repo_url)
+    index_repository(repo_path)
     return{"message": "repo Cloned and indexed", "path": repo_path}
 
 @app.get("/repo-structure")
@@ -115,6 +117,7 @@ def get_file_content(repo_name: str, file_path: str):
 
 @app.post("/chat")
 def chat(request: ChatRequest):
+    # chunks = retrieve_chunks(request.question)
     chunks = retrieve_chunks(request.question)
     answer = generate_answer(request.question, chunks)
     return {"answer": answer}
